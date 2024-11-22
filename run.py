@@ -1,3 +1,6 @@
+import sys
+
+
 
 # A simple stock system (dictionary to hold currency and stock quantities)
 stock = {
@@ -19,6 +22,74 @@ def display_main_menu():
     print("3. Exit")
     choice = input("Choose an option: ")
     return choice
+
+def admin_panel():
+    """
+    Displays the Admin Panel menu with options to manage exchange rates, 
+    currency stock, and view transaction logs.
+
+    Returns:
+        str: User's choice from the Admin Panel.
+    """
+    print("\n--- Admin Panel ---")
+    print("1. View/Update Exchange Rates")
+    print("2. Manage Currency Stock")
+    print("3. View Transaction Logs")
+    print("4. Back to Main Menu")
+    choice = input("Choose an option: ")
+    return choice
+
+def manage_stock():
+    """
+    Allows the admin to add or remove currency stock from the available 
+    currencies.
+
+    The function gives the admin a choice to add or remove stock, input the 
+    amount, and updates the stock dictionary accordingly.
+    """
+    print("\n--- Manage Stock ---")
+    print("1. Add Stock")
+    print("2. Remove Stock")
+    print("3. Back to Admin Menu")
+    choice = input("Choose an option: ")
+    
+    if choice == "1":
+        currency = input("Enter the currency to add stock (USD, EUR, GBP): ").upper()
+        amount = int(input("Enter the amount to add: "))
+        if currency in stock:
+            stock[currency] += amount
+            print(f"Added {amount} units of {currency}.")
+        else:
+            print("Invalid currency.")
+    elif choice == "2":
+        currency = input("Enter the currency to remove stock (USD, EUR, GBP): ").upper()
+        amount = int(input("Enter the amount to remove: "))
+        if currency in stock and stock[currency] >= amount:
+            stock[currency] -= amount
+            print(f"Removed {amount} units of {currency}.")
+        else:
+            print("Insufficient stock or invalid currency.")
+    elif choice == "3":
+        return
+    else:
+        print("Invalid choice.")
+
+def admin_login():
+    """
+    Prompts the user to log in to the Admin Panel by entering a password.
+
+    Returns:
+        bool: True if login is successful, False if login fails.
+    """
+    print("\n--- Admin Login ---")
+    password = input("Enter admin password: ")
+    if password == "admin123":  # Simple password for the admin
+        print("Login successful!")
+        return True
+    else:
+        print("Invalid password.")
+        return False
+
 
 def customer_panel():
     """
@@ -54,8 +125,21 @@ def main():
         choice = display_main_menu()
 
         if choice == "1":
-            print("Coming Soon")
-            main()
+            if admin_login():
+                while True:
+                    admin_choice = admin_panel()
+                    if admin_choice == "1":
+                        print("\n--- View/Update Exchange Rates ---")
+                        print("Feature coming soon!")
+                    elif admin_choice == "2":
+                        manage_stock()
+                    elif admin_choice == "3":
+                        print("\n--- Transaction Logs ---")
+                        print("Feature coming soon!")
+                    elif admin_choice == "4":
+                        break
+                    else:
+                        print("Invalid choice.")
         elif choice == "2":
             while True:
                 customer_choice = customer_panel()
@@ -66,4 +150,6 @@ def main():
             sys.exit()
         else:
             print("Invalid option. Please choose again.")
-main()
+# Run the program
+if __name__ == "__main__":
+    main()

@@ -6,9 +6,19 @@ import sys
 stock = {
     "USD": 1000,  # 1000 units of USD available
     "EUR": 500,   # 500 units of EUR available
-    "GBP": 300    # 300 units of GBP available
+    "GBP": 300,    # 300 units of GBP available
+    "JPY": 400,    # 300 units of GBP available
+    "AUD": 600,    # 300 units of GBP available
 }
 
+# Sample currency exchange rates
+exchange_rates = {
+    "USD": 1.0,  # Base currency
+    "EUR": 0.92,
+    "GBP": 0.78,
+    "JPY": 148.58,
+    "AUD": 1.54
+}
 
 def display_main_menu():
     """
@@ -19,7 +29,7 @@ def display_main_menu():
     print("--- Currency Stock System ---")
     print("1. Admin Panel")
     print("2. Customer Panel")
-    print("3. Exit")
+    print("3. Log Out")
     choice = input("Choose an option: ")
     return choice
 
@@ -101,17 +111,31 @@ def customer_panel():
     """
     print("\n--- Customer Panel ---")
     print("1. View Currency Stock")
-    print("2. Exit")
+    print("2. View Exchange Rates")
+    print("3. Exit")
     choice = input("Choose an option: ")
     
     if choice == "1":
         print("\n--- Currency Stock ---")
         for currency, quantity in stock.items():
             print(f"{currency}: {quantity} units available")
+    
     elif choice == "2":
+        view_exchange_rates()
+    elif choice == "3":
         return
     else:
         print("Invalid choice.")
+
+def view_exchange_rates():
+    """
+    Display current exchange rates for all available currencies.
+    """
+    print("\nCurrent Exchange Rates")
+    print("----------------------")
+    for currency, rate in exchange_rates.items():
+        print(f"{rate} {currency}")
+
 
 def main():
     """

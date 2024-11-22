@@ -52,4 +52,9 @@ def main():
                 customer_choice = customer_panel()
                 if customer_choice is None:
                         break
+        elif choice == "3":
+            print("Exiting the system...")
+            sys.exit()
+        else:
+            print("Invalid option. Please choose again.")
 main()

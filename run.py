@@ -1,3 +1,12 @@
+
+# A simple stock system (dictionary to hold currency and stock quantities)
+stock = {
+    "USD": 1000,  # 1000 units of USD available
+    "EUR": 500,   # 500 units of EUR available
+    "GBP": 300    # 300 units of GBP available
+}
+
+
 def display_main_menu():
     """
     Displays the main menu to the user with options to access the Admin Panel, 
@@ -46,7 +55,7 @@ def main():
 
         if choice == "1":
             print("Coming Soon")
-            break
+            main()
         elif choice == "2":
             while True:
                 customer_choice = customer_panel()

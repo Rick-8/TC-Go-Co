@@ -1,4 +1,5 @@
 import sys
+import os
 
 
 
@@ -25,13 +26,21 @@ def display_main_menu():
     Displays the main menu to the user with options to access the Admin Panel, 
     Customer Panel, or Exit the system.
     """
+    clear_screen()  # Clear the console before displaying the menu
     print("\n--- TC Go Co. ---")
-    print("--- Currency Stock System ---")
+    print("--- Currency System ---")
     print("1. Admin Panel")
     print("2. Customer Panel")
     print("3. Log Out")
     choice = input("Choose an option: ")
     return choice
+
+# Function to clear the console
+def clear_screen():
+    """
+    Clears the console output based on the operating system.
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def admin_panel():
     """
@@ -41,6 +50,7 @@ def admin_panel():
     Returns:
         str: User's choice from the Admin Panel.
     """
+    clear_screen()
     print("\n--- Admin Panel ---")
     print("1. View/Update Exchange Rates")
     print("2. Manage Currency Stock")
@@ -57,6 +67,7 @@ def manage_stock():
     The function gives the admin a choice to add or remove stock, input the 
     amount, and updates the stock dictionary accordingly.
     """
+    clear_screen()
     print("\n--- Manage Stock ---")
     print("1. Add Stock")
     print("2. Remove Stock")
@@ -91,6 +102,7 @@ def admin_login():
     Returns:
         bool: True if login is successful, False if login fails.
     """
+    clear_screen()  # Clear the console before displaying the menu
     print("\n--- Admin Login ---")
     password = input("Enter admin password: ")
     if password == "admin123":  # Simple password for the admin
@@ -105,6 +117,7 @@ def sell_currency():
     """
     Allows customers to buy foreign currency from the shop.
     """
+    clear_screen()
     print("\nSell Currency")
     print("Available Stock:")
     for currency, units in stock.items():
@@ -153,6 +166,7 @@ def customer_panel():
     Returns:
         None: Exits when the customer chooses the option to leave.
     """
+    clear_screen()
     print("\n--- Customer Panel ---")
     print("1. View Currency Stock")
     print("2. View Exchange Rates")
@@ -163,7 +177,8 @@ def customer_panel():
     if choice == "1":
         print("\n--- Currency Stock ---")
         for currency, quantity in stock.items():
-            print(f"{currency}: {quantity} units available")
+           print(f"{currency}: {quantity} units available")
+        input("\nPress Enter to return to the previous menu...")
     
     elif choice == "2":
         view_exchange_rates()
@@ -178,10 +193,12 @@ def view_exchange_rates():
     """
     Display current exchange rates for all available currencies.
     """
+    clear_screen()
     print("\nCurrent Exchange Rates")
     print("----------------------")
     for currency, rate in exchange_rates.items():
         print(f"1 GBP = {rate} {currency}")
+    input("\nPress Enter to return to the previous menu...")
 
 
 def main():
@@ -192,9 +209,9 @@ def main():
 
     Loops through the main menu until the user chooses to exit.
     """
+    clear_screen()  # Clear the console before displaying the menu
     while True:
         choice = display_main_menu()
-
         if choice == "1":
             if admin_login():
                 while True:

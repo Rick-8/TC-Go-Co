@@ -197,7 +197,7 @@ def sell_currency():
         customer_panel()
 
 
-
+# Function for the customer section
 def customer_panel():
     """
     Displays the Customer Panel where users can view available currency stock 
@@ -259,11 +259,13 @@ def main():
                     if admin_choice == "1":
                         print("\n--- View/Update Exchange Rates ---")
                         print("Feature coming soon!")
+                        input("Press Enter to return to the previous menu...")
                     elif admin_choice == "2":
                         manage_stock()
                     elif admin_choice == "3":
                         print("\n--- Transaction Logs ---")
                         print("Feature coming soon!")
+                        input("Press Enter to return to the previous menu...")
                     elif admin_choice == "4":
                         break
                     else:

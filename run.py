@@ -4,20 +4,20 @@ import sys
 
 # A simple stock system (dictionary to hold currency and stock quantities)
 stock = {
-    "USD": 1000,  # 1000 units of USD available
-    "EUR": 500,   # 500 units of EUR available
-    "GBP": 300,    # 300 units of GBP available
-    "JPY": 400,    # 300 units of GBP available
-    "AUD": 600,    # 300 units of GBP available
+    "USD": 10000,
+    "EUR": 5000,
+    "GBP": 3000,
+    "JPY": 4000,
+    "AUD": 6000,
 }
 
 # Sample currency exchange rates
 exchange_rates = {
-    "USD": 1.0,  # Base currency
-    "EUR": 0.92,
-    "GBP": 0.78,
-    "JPY": 148.58,
-    "AUD": 1.54
+    "USD": 1.21,  
+    "EUR": 1.15,
+    "GBP": 1.0, # Base currency
+    "JPY": 0.52,
+    "AUD": 1.85
 }
 
 def display_main_menu():
@@ -100,6 +100,50 @@ def admin_login():
         print("Invalid password.")
         return False
 
+# Sell currency (Till)
+def sell_currency():
+    """
+    Allows customers to buy foreign currency from the shop.
+    """
+    print("\nSell Currency")
+    print("Available Stock:")
+    for currency, units in stock.items():
+        print(f"{currency}: {units} units available")
+    
+    selected_currency = input("Enter the currency you want to buy (e.g., EUR, GBP): ").strip().upper()
+    
+    if selected_currency not in stock:
+        print("Invalid currency selection. Please try again.")
+        return
+    
+    try:
+        amount = float(input(f"Enter the amount of {selected_currency} you want to buy: "))
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
+        return
+
+    # Check if sufficient stock is available
+    if amount > stock[selected_currency]:
+        print(f"Sorry, we only have {stock[selected_currency]} units of {selected_currency} available.")
+        return
+    
+    # Calculate cost in USD
+    exchange_rate = exchange_rates[selected_currency]
+    cost_in_usd = amount / exchange_rate
+    
+    # Confirm transaction
+    print(f"The cost for {amount:.2f} {selected_currency} is {cost_in_usd:.2f} USD.")
+    confirm = input("Do you want to proceed with the transaction? (yes/no): ").strip().lower()
+    
+    if confirm == "yes":
+        # Deduct from stock
+        stock[selected_currency] -= amount
+        print(f"Transaction successful! You have purchased {amount:.2f} {selected_currency} for {cost_in_usd:.2f} USD.")
+        print(f"Remaining stock for {selected_currency}: {stock[selected_currency]:.2f} units.")
+    else:
+        print("Transaction cancelled.")
+
+
 
 def customer_panel():
     """
@@ -112,7 +156,8 @@ def customer_panel():
     print("\n--- Customer Panel ---")
     print("1. View Currency Stock")
     print("2. View Exchange Rates")
-    print("3. Exit")
+    print("3. Sell Currency (Till)")
+    print("4. Exit")
     choice = input("Choose an option: ")
     
     if choice == "1":
@@ -123,6 +168,8 @@ def customer_panel():
     elif choice == "2":
         view_exchange_rates()
     elif choice == "3":
+        sell_currency()        
+    elif choice == "4":
         return
     else:
         print("Invalid choice.")
@@ -134,7 +181,7 @@ def view_exchange_rates():
     print("\nCurrent Exchange Rates")
     print("----------------------")
     for currency, rate in exchange_rates.items():
-        print(f"{rate} {currency}")
+        print(f"1 GBP = {rate} {currency}")
 
 
 def main():

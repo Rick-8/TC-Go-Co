@@ -1,6 +1,6 @@
 import sys
 import os
-
+import datetime
 
 
 # A simple stock system (dictionary to hold currency and stock quantities)
@@ -21,6 +21,7 @@ exchange_rates = {
     "AUD": 1.85
 }
 
+# Function for the main menu
 def display_main_menu():
     """
     Displays the main menu to the user with options to access the Admin Panel, 
@@ -42,6 +43,7 @@ def clear_screen():
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
+# Function for the admin panel
 def admin_panel():
     """
     Displays the Admin Panel menu with options to manage exchange rates, 
@@ -59,6 +61,7 @@ def admin_panel():
     choice = input("Choose an option: ")
     return choice
 
+# Function to manage stock
 def manage_stock():
     """
     Allows the admin to add or remove currency stock from the available 
@@ -95,13 +98,12 @@ def manage_stock():
     else:
         print("Invalid choice.")
 
+# Function for the admin password login
 def admin_login():
     """
     Prompts the user to log in to the Admin Panel by entering a password.
-
-    Returns:
-        bool: True if login is successful, False if login fails.
     """
+
     clear_screen()  # Clear the console before displaying the menu
     print("\n--- Admin Login ---")
     password = input("Enter admin password: ")
@@ -111,6 +113,32 @@ def admin_login():
     else:
         print("Invalid password.")
         return False
+
+# Function for the print receipt
+def print_receipt(currency, amount, cost_in_gbp):
+    """
+    Prints a receipt after a successful transaction. It includes the currency purchased,
+    amount, cost in GBP, and the current date/time.
+    """
+    # Get the current date and time
+    transaction_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Print receipt
+    print("\n---- RECEIPT ----")
+    print("---- TC Go Co. ----")
+    print("Stand 56, T4 Gatwick Airport")
+    print(f"Transaction Date/Time: \n{transaction_time}")
+    print("\n")
+    print(f"Currency Purchased: {currency}")
+    print(f"Amount: {amount:.2f} {currency}")
+    print("\n")
+    print(f"Total Cost: £{cost_in_gbp:.2f} GBP")
+    print("\nThank you for your purchase!")
+    print("----------------------")
+    print("\n")
+    input("Press Enter to return to the previous menu...")
+    customer_panel()
+
 
 # Sell currency (Till)
 def sell_currency():
@@ -122,7 +150,7 @@ def sell_currency():
     print("Available Stock:")
     for currency, units in stock.items():
         print(f"{currency}: {units} units available")
-    
+        
     selected_currency = input("Enter the currency you want to buy (e.g., EUR, GBP): ").strip().upper()
     
     if selected_currency not in stock:
@@ -131,6 +159,7 @@ def sell_currency():
     
     try:
         amount = float(input(f"Enter the amount of {selected_currency} you want to buy: "))
+        print("\n")
     except ValueError:
         print("Invalid input. Please enter a numeric value.")
         return
@@ -140,21 +169,32 @@ def sell_currency():
         print(f"Sorry, we only have {stock[selected_currency]} units of {selected_currency} available.")
         return
     
-    # Calculate cost in USD
+    # Calculate cost in GBP
     exchange_rate = exchange_rates[selected_currency]
-    cost_in_usd = amount / exchange_rate
+    cost_in_gbp = amount / exchange_rate
     
     # Confirm transaction
-    print(f"The cost for {amount:.2f} {selected_currency} is {cost_in_usd:.2f} USD.")
-    confirm = input("Do you want to proceed with the transaction? (yes/no): ").strip().lower()
-    
-    if confirm == "yes":
+    print(f"The cost for {amount:.2f} {selected_currency} is {cost_in_gbp:.2f} GBP.")
+    confirm = input("Do you want to proceed with the transaction? (Y/N): ").strip().lower()
+        
+    if confirm == "y":
         # Deduct from stock
         stock[selected_currency] -= amount
-        print(f"Transaction successful! You have purchased {amount:.2f} {selected_currency} for {cost_in_usd:.2f} USD.")
+        print(f"Transaction successful! You have purchased {amount:.2f} {selected_currency} for {cost_in_gbp:.2f} GBP.")
+        print("\n")
         print(f"Remaining stock for {selected_currency}: {stock[selected_currency]:.2f} units.")
+        
+        # Ask if the customer wants a receipt
+        receipt_choice = input("Do you want to print a receipt? (y/n): ").strip().lower()
+        if receipt_choice == 'y':
+            # Print receipt after the transaction
+            print_receipt(selected_currency, amount, cost_in_gbp)
+        else:
+            print("No receipt will be printed.")
     else:
         print("Transaction cancelled.")
+        input("\nPress Enter to return to the previous menu...")
+        customer_panel()
 
 
 

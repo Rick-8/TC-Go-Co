@@ -1,7 +1,7 @@
 import sys
 import os
 import datetime
-
+import time
 
 # A simple stock system (dictionary to hold currency and stock quantities)
 stock = {
@@ -110,8 +110,10 @@ def admin_login():
     if password == "admin123":  # Simple password for the admin
         print("Login successful!")
         return True
+        
     else:
         print("Invalid password.")
+        time.sleep(3)
         return False
 
 # Function for the print receipt

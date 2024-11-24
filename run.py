@@ -78,21 +78,31 @@ def manage_stock():
     choice = input("Choose an option: ")
     
     if choice == "1":
+        clear_screen()
         currency = input("Enter the currency to add stock (USD, EUR, GBP): ").upper()
         amount = int(input("Enter the amount to add: "))
         if currency in stock:
             stock[currency] += amount
             print(f"Added {amount} units of {currency}.")
+            time.sleep(2)
+            manage_stock()
         else:
             print("Invalid currency.")
+            time.sleep(3)
+            manage_stock()
     elif choice == "2":
+        clear_screen()
         currency = input("Enter the currency to remove stock (USD, EUR, GBP): ").upper()
         amount = int(input("Enter the amount to remove: "))
         if currency in stock and stock[currency] >= amount:
             stock[currency] -= amount
             print(f"Removed {amount} units of {currency}.")
+            time.sleep(2)
+            manage_stock()
         else:
             print("Insufficient stock or invalid currency.")
+            time.sleep(3)
+            manage_stock()
     elif choice == "3":
         return
     else:
@@ -109,6 +119,7 @@ def admin_login():
     password = input("Enter admin password: ")
     if password == "admin123":  # Simple password for the admin
         print("Login successful!")
+        time.sleep(1)
         return True
         
     else:
@@ -138,7 +149,7 @@ def print_receipt(currency, amount, cost_in_gbp):
     print("\nThank you for your purchase!")
     print("----------------------")
     print("\n")
-    input("Press Enter to return to the previous menu...")
+    input("\nPress Enter to return to the previous menu...")
     customer_panel()
 
 
@@ -193,6 +204,7 @@ def sell_currency():
             print_receipt(selected_currency, amount, cost_in_gbp)
         else:
             print("No receipt will be printed.")
+            time.sleep(2)
             customer_panel()
     else:
         print("Transaction cancelled.")
@@ -265,13 +277,13 @@ def main():
                     if admin_choice == "1":
                         print("\n--- View/Update Exchange Rates ---")
                         print("Feature coming soon!")
-                        input("Press Enter to return to the previous menu...")
+                        time.sleep(3)
                     elif admin_choice == "2":
                         manage_stock()
                     elif admin_choice == "3":
                         print("\n--- Transaction Logs ---")
                         print("Feature coming soon!")
-                        input("Press Enter to return to the previous menu...")
+                        time.sleep(3)
                     elif admin_choice == "4":
                         break
                     else:
@@ -283,9 +295,11 @@ def main():
                         break
         elif choice == "3":
             print("Exiting the system...")
+            time.sleep(2)
             sys.exit()
         else:
             print("Invalid option. Please choose again.")
+            time.sleep(2)
 # Run the program
 if __name__ == "__main__":
     main()

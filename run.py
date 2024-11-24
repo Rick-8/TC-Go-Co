@@ -191,6 +191,7 @@ def sell_currency():
             print_receipt(selected_currency, amount, cost_in_gbp)
         else:
             print("No receipt will be printed.")
+            customer_panel()
     else:
         print("Transaction cancelled.")
         input("\nPress Enter to return to the previous menu...")
@@ -215,10 +216,12 @@ def customer_panel():
     choice = input("Choose an option: ")
     
     if choice == "1":
+        clear_screen()
         print("\n--- Currency Stock ---")
         for currency, quantity in stock.items():
            print(f"{currency}: {quantity} units available")
         input("\nPress Enter to return to the previous menu...")
+        customer_panel()
     
     elif choice == "2":
         view_exchange_rates()
@@ -239,6 +242,7 @@ def view_exchange_rates():
     for currency, rate in exchange_rates.items():
         print(f"1 GBP = {rate} {currency}")
     input("\nPress Enter to return to the previous menu...")
+    customer_panel()
 
 
 def main():

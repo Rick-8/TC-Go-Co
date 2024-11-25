@@ -3,7 +3,7 @@ import os
 import datetime
 import time
 
-# A simple stock system (dictionary to hold currency and stock quantities)
+
 stock = {
     "USD": 10000,
     "EUR": 5000,
@@ -12,7 +12,7 @@ stock = {
     "AUD": 6000,
 }
 
-# Sample currency exchange rates
+
 exchange_rates = {
     "USD": 1.21,  
     "EUR": 1.15,
@@ -21,13 +21,13 @@ exchange_rates = {
     "AUD": 1.85
 }
 
-# Function for the main menu
+
 def display_main_menu():
     """
     Displays the main menu to the user with options to access the Admin Panel, 
     Customer Panel, or Exit the system.
     """
-    clear_screen()  # Clear the console before displaying the menu
+    clear_screen()
     print("\n--- TC Go Co. ---")
     print("--- Currency System ---")
     print("\n")
@@ -43,14 +43,14 @@ def display_main_menu():
         else:
             print("Invalid option. Please select 1, 2, or 3.")
 
-# Function to clear the console
+
 def clear_screen():
     """
     Clears the console output based on the operating system.
     """
     os.system('cls' if os.name == 'nt' else 'clear')
 
-# Function for the admin panel
+
 def admin_panel():
     """
     Displays the Admin Panel menu with options to manage exchange rates, 
@@ -59,7 +59,7 @@ def admin_panel():
     Returns:
         str: User's choice from the Admin Panel.
     """
-    clear_screen()  # Clear the console before displaying the menu
+    clear_screen()
     print("\n--- Admin Panel ---")
     print("1. View/Update Exchange Rates")
     print("2. Manage Currency Stock")
@@ -68,7 +68,7 @@ def admin_panel():
     choice = input("Choose an option: ")
     return choice
 
-# Function to manage stock
+
 def manage_stock():
     """
     Allows the admin to add or remove currency stock from the available 
@@ -77,7 +77,7 @@ def manage_stock():
     The function gives the admin a choice to add or remove stock, input the 
     amount, and updates the stock dictionary accordingly.
     """
-    clear_screen()  # Clear the console before displaying the menu
+    clear_screen()
     print("\n--- Manage Stock ---")
     print("1. Add Stock")
     print("2. Remove Stock")
@@ -97,6 +97,7 @@ def manage_stock():
             print("Invalid currency.")
             time.sleep(3)
             manage_stock()
+
     elif choice == "2":
         clear_screen()
         currency = input("Enter the currency to remove stock (USD, EUR, GBP): ").upper()
@@ -115,16 +116,16 @@ def manage_stock():
     else:
         print("Invalid choice.")
 
-# Function for the admin password login
+
 def admin_login():
     """
     Prompts the user to log in to the Admin Panel by entering a password.
     """
 
-    clear_screen()  # Clear the console before displaying the menu
+    clear_screen()
     print("\n--- Admin Login ---")
     password = input("Enter admin password: ")
-    if password == "admin123":  # Simple password for the admin
+    if password == "admin123":
         print("Login successful!")
         time.sleep(1)
         return True
@@ -134,16 +135,17 @@ def admin_login():
         time.sleep(3)
         return False
 
-# Function for the print receipt
+
 def print_receipt(currency, amount, cost_in_gbp):
     """
-    Prints a receipt after a successful transaction. It includes the currency purchased,
-    amount, cost in GBP, and the current date/time.
+    Prints a receipt after a successful transaction. 
+    It includes the currency purchased, amount, cost in GBP, 
+    and the current date/time.
     """
-    # Get the current date and time
+   
     transaction_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    # Print receipt
+    
     print("\n---- RECEIPT ----")
     print("---- TC Go Co. ----")
     print("Stand 56, T4 Gatwick Airport")
@@ -160,7 +162,7 @@ def print_receipt(currency, amount, cost_in_gbp):
     customer_panel()
 
 
-# Sell currency (Till)
+
 def sell_currency():
     """
     Allows customers to buy foreign currency from the shop.
@@ -171,10 +173,12 @@ def sell_currency():
     for currency, units in stock.items():
         print(f"{currency}: {units} units available")
         
-    selected_currency = input("Enter the currency you want to buy (e.g., EUR, GBP): ").strip().upper()
+    selected_currency_message = "please enter currency code e.g USD, EUR, JPY..."
+    selected_currency = input(f"{selected_currency_message}").strip().upper()
     
     if selected_currency not in stock:
         print("Invalid currency selection. Please try again.")
+        time.sleep(2)
         return
     
     try:
@@ -182,32 +186,34 @@ def sell_currency():
         print("\n")
     except ValueError:
         print("Invalid input. Please enter a numeric value.")
+        time.sleep(2)
         return
 
-    # Check if sufficient stock is available
+   
     if amount > stock[selected_currency]:
-        print(f"Sorry, we only have {stock[selected_currency]} units of {selected_currency} available.")
+        print(f"\nSorry, we only have {stock[selected_currency]} units of {selected_currency} available.")
         return
     
-    # Calculate cost in GBP
+    
     exchange_rate = exchange_rates[selected_currency]
     cost_in_gbp = amount / exchange_rate
     
-    # Confirm transaction
+    
     print(f"The cost for {amount:.2f} {selected_currency} is {cost_in_gbp:.2f} GBP.")
     confirm = input("Do you want to proceed with the transaction? (Y/N): ").strip().lower()
         
     if confirm == "y":
-        # Deduct from stock
+        
         stock[selected_currency] -= amount
-        print(f"Transaction successful! You have purchased {amount:.2f} {selected_currency} for {cost_in_gbp:.2f} GBP.")
+        print(f"Transaction successful! You have purchased {amount:.2f}"
+        f"{selected_currency} for {cost_in_gbp:.2f} GBP.")
         print("\n")
         print(f"Remaining stock for {selected_currency}: {stock[selected_currency]:.2f} units.")
         
-        # Ask if the customer wants a receipt
+        
         receipt_choice = input("Do you want to print a receipt? (y/n): ").strip().lower()
         if receipt_choice == 'y':
-            # Print receipt after the transaction
+            
             print_receipt(selected_currency, amount, cost_in_gbp)
         else:
             print("No receipt will be printed.")
@@ -219,11 +225,11 @@ def sell_currency():
         customer_panel()
 
 
-# Function for the customer section
+
 def customer_panel():
     """
-    Displays the Customer Panel where users can view available currency stock 
-    or exit the system.
+    Displays the Customer Panel where users can view available 
+    currency stock or exit the system.
 
     Returns:
         None: Exits when the customer chooses the option to leave.
@@ -271,13 +277,15 @@ def view_exchange_rates():
 
 def main():
     """
-    The main function that controls the flow of the program. It displays the main 
-    menu, handles navigation to either the Admin Panel or Customer Panel, and 
-    exits the program when the user chooses to do so.
+    The main function that controls the flow of the program. 
+    It displays the main menu, handles navigation to either 
+    the Admin Panel or Customer Panel, and exits the program 
+    when the user chooses to do so.
 
     Loops through the main menu until the user chooses to exit.
     """
-    clear_screen()  # Clear the console before displaying the menu
+
+    clear_screen()
     while True:
         choice = display_main_menu()
         if choice == "1":
@@ -287,13 +295,15 @@ def main():
                     if admin_choice == "1":
                         print("\n--- View/Update Exchange Rates ---")
                         print("Feature coming soon!")
-                        time.sleep(3)
+                        time.sleep(2)
+                        admin_panel()
                     elif admin_choice == "2":
                         manage_stock()
                     elif admin_choice == "3":
                         print("\n--- Transaction Logs ---")
                         print("Feature coming soon!")
-                        time.sleep(3)
+                        time.sleep(2)
+                        admin_panel()
                     elif admin_choice == "4":
                         break
                     else:
@@ -306,7 +316,7 @@ def main():
         elif choice == "3":
             print("Exiting the system...")
             time.sleep(2)
-            clear_screen()  # Clear the screen before exiting the program
+            clear_screen()
             sys.exit()
             
         else:

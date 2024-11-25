@@ -5,3 +5,21 @@ The all-new To Go Co. Till System—designed to revolutionize the way you manage
 
 ## Project goal
 The goal of this project is to develop a Currency Stock and Till System for To Go Co., a travel cash shop. The system aims to streamline the management of currency inventory, enabling the staff to easily track stock levels and prices. It also allows customers to purchase foreign currency, with real-time exchange rate calculations, and provides a receipt for every transaction. The project aims to create an efficient, user-friendly interface for both admins and customers, simplifying the process of currency management, purchase transactions, and record-keeping. Ultimately, the system will enhance customer experience, improve operational efficiency, and ensure accurate financial transactions.
+
+## Target Audience
+The target audience for the Currency Stock and Till System would be:
+
+- Travel Agencies and Currency Exchange Providers – Businesses that deal with foreign exchange, offering various currencies to travelers. They would benefit from a   streamlined system that manages stock and exchange rates efficiently while providing a smooth transaction process for customers.
+
+- Tourism-related Businesses – These include travel agents, tour operators, and even airport currency exchange kiosks. They require a reliable system to offer currency to 
+  customers in a simple, automated manner, especially in busy environments where speed and accuracy are critical.
+
+ - Retail and Hospitality Industry – Hotels, resorts, and retail shops located in tourist-heavy areas, where guests may require currency exchange services.
+
+-  Travel Enthusiasts – Individual travelers or groups who may be purchasing or exchanging foreign currencies for their trips would also be an indirect audience for this type  
+   of system, as it provides them with an efficient way to complete currency transactions.
+
+-  Small Business Owners – Owners of small currency exchange or travel service businesses who want a low-cost but efficient way of tracking currency stock and processing 
+   transactions.
+
+By targeting these groups, the system can address common challenges faced by businesses that provide currency exchange, while also improving customer service and operational efficiency.

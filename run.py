@@ -37,7 +37,7 @@ def display_main_menu():
     print("\nPress the corresponding number key to choose an option.")
 
     while True:
-        choice = input("\n Please choose an option: ").strip()
+        choice = input("\nPlease choose an option: ").strip()
         if choice in ["1", "2", "3"]:
             return choice
         else:
@@ -229,12 +229,14 @@ def customer_panel():
         None: Exits when the customer chooses the option to leave.
     """
     clear_screen()
-    print("\n--- Customer Panel ---")
-    print("1. View Currency Stock")
+    print("---- TC Go Co. ----")
+    print("--- Customer Panel ---")
+    print("\n1. View Currency Stock")
     print("2. View Exchange Rates")
     print("3. Sell Currency (Till)")
     print("4. Exit")
-    choice = input("Choose an option: ")
+    print("\n")
+    choice = input("Choose an option: ").strip()
     
     if choice == "1":
         clear_screen()
@@ -258,6 +260,7 @@ def view_exchange_rates():
     Display current exchange rates for all available currencies.
     """
     clear_screen()
+    print("\n---- TC Go Co. ----")
     print("\nCurrent Exchange Rates")
     print("----------------------")
     for currency, rate in exchange_rates.items():
@@ -303,7 +306,7 @@ def main():
         elif choice == "3":
             print("Exiting the system...")
             time.sleep(2)
-            clear_screen()  # Clear the console before displaying the menu
+            clear_screen()  # Clear the screen before exiting the program
             sys.exit()
             
         else:

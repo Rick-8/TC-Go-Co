@@ -30,11 +30,18 @@ def display_main_menu():
     clear_screen()  # Clear the console before displaying the menu
     print("\n--- TC Go Co. ---")
     print("--- Currency System ---")
+    print("\n")
     print("1. Admin Panel")
     print("2. Customer Panel")
     print("3. Log Out")
-    choice = input("Choose an option: ")
-    return choice
+    print("\nPress the corresponding number key to choose an option.")
+
+    while True:
+        choice = input("\n Please choose an option: ").strip()
+        if choice in ["1", "2", "3"]:
+            return choice
+        else:
+            print("Invalid option. Please select 1, 2, or 3.")
 
 # Function to clear the console
 def clear_screen():
@@ -52,7 +59,7 @@ def admin_panel():
     Returns:
         str: User's choice from the Admin Panel.
     """
-    clear_screen()
+    clear_screen()  # Clear the console before displaying the menu
     print("\n--- Admin Panel ---")
     print("1. View/Update Exchange Rates")
     print("2. Manage Currency Stock")
@@ -70,7 +77,7 @@ def manage_stock():
     The function gives the admin a choice to add or remove stock, input the 
     amount, and updates the stock dictionary accordingly.
     """
-    clear_screen()
+    clear_screen()  # Clear the console before displaying the menu
     print("\n--- Manage Stock ---")
     print("1. Add Stock")
     print("2. Remove Stock")
@@ -296,7 +303,9 @@ def main():
         elif choice == "3":
             print("Exiting the system...")
             time.sleep(2)
+            clear_screen()  # Clear the console before displaying the menu
             sys.exit()
+            
         else:
             print("Invalid option. Please choose again.")
             time.sleep(2)

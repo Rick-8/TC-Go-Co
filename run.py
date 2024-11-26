@@ -92,7 +92,7 @@ def manage_stock():
             manage_stock()
         else:
             print("Invalid currency.")
-            time.sleep(3)
+            time.sleep(2)
             manage_stock()
 
     elif choice == "2":
@@ -107,7 +107,7 @@ def manage_stock():
             manage_stock()
         else:
             print("Insufficient stock or invalid currency.")
-            time.sleep(3)
+            time.sleep(2)
             manage_stock()
     elif choice == "3":
         return
@@ -129,7 +129,7 @@ def admin_login():
         return True        
     else:
         print("Invalid password.")
-        time.sleep(3)
+        time.sleep(2)
         return False
 
 

@@ -37,7 +37,7 @@ def display_main_menu():
     print("\nPress the corresponding number key to choose an option.")
 
     while True:
-        choice = input("\nPlease choose an option: ").strip()
+        choice = input("\nPlease choose an option: \n").strip()
         if choice in ["1", "2", "3"]:
             return choice
         else:
@@ -62,7 +62,7 @@ def admin_panel():
     print("2. Manage Currency Stock")
     print("3. View Transaction Logs")
     print("4. Back to Main Menu")
-    choice = input("Choose an option: ")
+    choice = input("Choose an option: \n")
     return choice
 
 
@@ -79,12 +79,12 @@ def manage_stock():
     print("1. Add Stock")
     print("2. Remove Stock")
     print("3. Back to Admin Menu")
-    choice = input("Choose an option: ")
+    choice = input("Choose an option: \n")
     if choice == "1":
         clear_screen()
         currency_message = "Enter the currency to add stock (USD, EUR, GBP):"
-        currency = input(f"{currency_message}").upper()
-        amount = int(input("Enter the amount to add: "))
+        currency = input(f"{currency_message}\n").upper()
+        amount = int(input("Enter the amount to add: \n"))
         if currency in stock:
             stock[currency] += amount
             print(f"Added {amount} units of {currency}.")
@@ -98,8 +98,8 @@ def manage_stock():
     elif choice == "2":
         clear_screen()
         rc_message = "Enter the currency to remove stock (USD, EUR, GBP):"
-        currency = input(f"{rc_message}").upper()
-        amount = int(input("Enter the amount to remove: "))
+        currency = input(f"{rc_message}\n").upper()
+        amount = int(input("Enter the amount to remove: \n"))
         if currency in stock and stock[currency] >= amount:
             stock[currency] -= amount
             print(f"Removed {amount} units of {currency}.")
@@ -122,7 +122,7 @@ def admin_login():
 
     clear_screen()
     print("\n--- Admin Login ---")
-    password = input("Enter admin password: ")
+    password = input("Enter admin password: \n")
     if password == "admin123":
         print("Login successful!")
         time.sleep(1)
@@ -153,7 +153,7 @@ def print_receipt(currency, amount, cost_in_gbp):
     print("\nThank you for your purchase!")
     print("----------------------")
     print("\n")
-    input("\nPress Enter to return to the previous menu...")
+    input("\nPress Enter to return to the previous menu...\n")
     customer_panel()
 
 
@@ -168,32 +168,33 @@ def sell_currency():
         print(f"{currency}: {units} units available")
 
     sc_message = "please enter currency code e.g USD, EUR, JPY..."
-    selected_currency = input(f"{sc_message}").strip().upper()
+    selected_currency = input(f"{sc_message}\n").strip().upper()
 
     if selected_currency not in stock:
         print("Invalid currency selection. Please try again.")
         time.sleep(2)
-        return
+        sell_currency()
 
     sc_a_message = f"Enter the amount of {selected_currency} you want to buy:"
     try:
-        amount = float(input(f"{sc_a_message}"))
+        amount = float(input(f"{sc_a_message}\n"))
         print("\n")
     except ValueError:
         print("Invalid input. Please enter a numeric value.")
         time.sleep(2)
-        return
+        sell_currency()
 
     if amount > stock[selected_currency]:
         s_message = f"\nSorry, we only have{stock[selected_currency]} left."
         print(f"{s_message}")
-        return
+        time.sleep(2)
+        sell_currency()
 
     exchange_rate = exchange_rates[selected_currency]
     cost_in_gbp = amount / exchange_rate
 
     print(f"{amount:.2f} {selected_currency} is {cost_in_gbp:.2f} GBP.")
-    confirm = input("Do you wish to proceed? (Y/N): ").strip().lower()
+    confirm = input("Do you wish to proceed? (Y/N): \n").strip().lower()
 
     if confirm == "y":
 
@@ -207,7 +208,7 @@ def sell_currency():
 
         print("\n")
         receipt_message = "Do you want to print a receipt? (y/n):"
-        receipt_choice = input(f"{receipt_message}").strip().lower()
+        receipt_choice = input(f"{receipt_message}\n").strip().lower()
         if receipt_choice == 'y':
 
             print_receipt(selected_currency, amount, cost_in_gbp)
@@ -217,7 +218,7 @@ def sell_currency():
             customer_panel()
     else:
         print("Transaction cancelled.")
-        input("\nPress Enter to return to the previous menu...")
+        input("\nPress Enter to return to the previous menu...\n")
         customer_panel()
 
 
@@ -237,14 +238,14 @@ def customer_panel():
     print("3. Sell Currency (Till)")
     print("4. Exit")
     print("\n")
-    choice = input("Choose an option: ").strip()
+    choice = input("Choose an option: \n").strip()
 
     if choice == "1":
         clear_screen()
         print("\n--- Currency Stock ---")
         for currency, quantity in stock.items():
             print(f"{currency}: {quantity} units available")
-        input("\nPress Enter to return to the previous menu...")
+        input("\nPress Enter to return to the previous menu...\n")
         customer_panel()
 
     elif choice == "2":
@@ -252,7 +253,7 @@ def customer_panel():
     elif choice == "3":
         sell_currency()        
     elif choice == "4":
-        return
+        main()
     else:
         print("Invalid choice.")
 
@@ -268,7 +269,7 @@ def view_exchange_rates():
     print("----------------------")
     for currency, rate in exchange_rates.items():
         print(f"1 GBP = {rate} {currency}")
-    input("\nPress Enter to return to the previous menu...")
+    input("\nPress Enter to return to the previous menu...\n")
     customer_panel()
 
 

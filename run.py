@@ -68,10 +68,10 @@ def admin_panel():
 
 def manage_stock():
     """
-    Allows the admin to add or remove currency stock from the available 
+    Allows the admin to add or remove currency stock from the available
     currencies.
 
-    The function gives the admin a choice to add or remove stock, input the 
+    The function gives the admin a choice to add or remove stock, input the
     amount, and updates the stock dictionary accordingly.
     """
     clear_screen()
@@ -119,14 +119,13 @@ def admin_login():
     """
     Prompts the user to log in to the Admin Panel by entering a password.
     """
-
     clear_screen()
     print("\n--- Admin Login ---")
     password = input("Enter admin password: \n")
     if password == "admin123":
         print("Login successful!")
         time.sleep(1)
-        return True        
+        return True
     else:
         print("Invalid password.")
         time.sleep(2)
@@ -136,7 +135,7 @@ def admin_login():
 def print_receipt(currency, amount, cost_in_gbp):
     """
     Prints a receipt after a successful transaction.
-    It includes the currency purchased, amount, cost in GBP, 
+    It includes the currency purchased, amount, cost in GBP,
     and the current date/time.
     """
     transaction_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -224,7 +223,7 @@ def sell_currency():
 
 def customer_panel():
     """
-    Displays the Customer Panel where users can view available 
+    Displays the Customer Panel where users can view available
     currency stock or exit the system.
 
     Returns:
@@ -251,7 +250,7 @@ def customer_panel():
     elif choice == "2":
         view_exchange_rates()
     elif choice == "3":
-        sell_currency()        
+        sell_currency()
     elif choice == "4":
         main()
     else:
@@ -275,14 +274,12 @@ def view_exchange_rates():
 
 def main():
     """
-    The main function that controls the flow of the program. 
-    It displays the main menu, handles navigation to either 
-    the Admin Panel or Customer Panel, and exits the program 
+    The main function that controls the flow of the program.
+    It displays the main menu, handles navigation to either
+    the Admin Panel or Customer Panel, and exits the program
     when the user chooses to do so.
-
     Loops through the main menu until the user chooses to exit.
     """
-
     clear_screen()
     while True:
         choice = display_main_menu()

@@ -31,14 +31,82 @@ By targeting these groups, the system can address common challenges faced by bus
 ## Design
 My first job was to design my program to get the right look, layout, and menu structure. I used the mobile first method in developing it for small screens, so it can be used on any device. I used [Lucid.app](https://lucid.app/) to plot a flow chart.
 
-![Lucid Chart Flow Chart](assets/images/tc-go-co-flow-chart.webp)
 
 
 
 ## Features
+The TC Go Co. Travel Currency Till System is a comprehensive and user-friendly solution designed to manage travel currency operations efficiently. Below are its key features:
+
+User-Friendly Design
+Features an easy-to-navigate menu system.
+Custom-designed to suit the needs of travel cash shops, ensuring a smooth workflow.
+Clean input prompts with organized outputs for professional usability.
+System Efficiency
+Real-time updates on stock levels and transactions.
+Modular design ensures future enhancements can be integrated seamlessly.
+
+### **Main Menu.**
+
+>![Lucid Chart Flow Chart](assets/images/tc-main-menu.webp)
+
+The Main Menu is the backbone of the program, giving options to branch out quickly and easily accessing different system areas.
+
+### **Admin Menu and Login.**
+
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-login.webp)
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-panel.webp)
+
+**Secure Admin Login**
+Protects sensitive operations like stock updates and transaction log viewing.
+Simple password-protected access ensures only authorized personnel can modify data.
+
+### **Admin option 1**
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-option1.webp)
+
+### **Admin option2**
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-manage-stock-menu.webp)
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-stock-add.webp)
+
+### **Admin option 3**
+> ![Lucid Chart Flow Chart](assets/images/tc-admin-transaction-logs.webp)
+
+### **Customer Menu**
+> ![Lucid Chart Flow Chart](assets/images/tc-customer-panel-menu.webp)
+
+### **Customer panel option 1**
+> ![Lucid Chart Flow Chart](assets/images/tc-customer-current-stock.webp)
+
+**Currency Stock Management**
+
+Admin Panel: Enables staff to view, add, or remove currency stock levels.
+Provides real-time updates on currency quantities to ensure accurate stock monitoring.
+
+### **Customer panel option 2**
+> ![Lucid Chart Flow Chart](assets/images/tc-customer-exchange-rates.webp)
+
+**Currency Exchange Rates**
+
+Displays up-to-date exchange rates for multiple currencies.
+Accessible to both admins and customers for transparency.
+Allows customers to calculate costs quickly and confidently.
+
+### **Customer panel option 3**
+> ![Lucid Chart Flow Chart](assets/images/tc-customer-sale-complete.webp)
+
+> ![Lucid Chart Flow Chart](assets/images/tc-customer-sale-receipt.webp)
+
+**Sales Till System**
+Customers can purchase their desired currency in real-time.
+Automatically calculates the cost based on current exchange rates.
+Ensures transactions are seamless and accurate.
+**Printable Receipt**
+After a transaction, customers have the option to print a detailed receipt.
+Includes transaction details such as the purchased amount, currency, and total cost.
+Enhances the professionalism of the service.
+
 
 ## Maunel Testing
-
+![Lucid Chart Flow Chart](assets/images/)
 ## Deployment
 
 ## Credits

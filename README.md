@@ -31,7 +31,7 @@ By targeting these groups, the system can address common challenges faced by bus
 ## Design
 My first job was to design my program to get the right look, layout, and menu structure. I used the mobile first method in developing it for small screens, so it can be used on any device. I used [Lucid.app](https://lucid.app/) to plot a flow chart.
 
-
+>![Lucid Chart Flow Chart](assets/images/tc-go-co-flow-chart.webp)
 
 
 ## Features
@@ -47,25 +47,27 @@ Modular design ensures future enhancements can be integrated seamlessly.
 
 ### **Main Menu.**
 
->![Lucid Chart Flow Chart](assets/images/tc-main-menu.webp)
+>![main menu](assets/images/tc-main-menu.webp)
 
-The Main Menu is the backbone of the program, giving options to branch out quickly and easily accessing different system areas.
+* The Main Menu is the backbone of the program, giving options to branch out 
+  quickly and easily accessing different system areas.
 
 ### **Admin Menu and Login.**
 
-> ![Lucid Chart Flow Chart](assets/images/tc-admin-login.webp)
-> ![Lucid Chart Flow Chart](assets/images/tc-admin-panel.webp)
+> ![Admin login](assets/images/tc-admin-login.webp)
+> ![Admin panel](assets/images/tc-admin-panel.webp)
+
 
 **Secure Admin Login**
-Protects sensitive operations like stock updates and transaction log viewing.
-Simple password-protected access ensures only authorized personnel can modify data.
+* Protects sensitive operations like stock updates and transaction log viewing.
+  Simple password-protected access ensures only authorized personnel can modify data.
 
 ### **Admin option 1**
-> ![Lucid Chart Flow Chart](assets/images/tc-admin-option1.webp)
+> ![Admin option 1](assets/images/tc-admin-option1.webp)
 
 ### **Admin option2**
-> ![Lucid Chart Flow Chart](assets/images/tc-admin-manage-stock-menu.webp)
-> ![Lucid Chart Flow Chart](assets/images/tc-admin-stock-add.webp)
+> ![Admin stock menu](assets/images/tc-admin-manage-stock-menu.webp)
+> ![](assets/images/tc-admin-stock-add.webp)
 
 ### **Admin option 3**
 > ![Lucid Chart Flow Chart](assets/images/tc-admin-transaction-logs.webp)
@@ -73,13 +75,20 @@ Simple password-protected access ensures only authorized personnel can modify da
 ### **Customer Menu**
 > ![Lucid Chart Flow Chart](assets/images/tc-customer-panel-menu.webp)
 
+**Customer Panel**
+
+* Intuitive interface for customers to explore stock availability and exchange 
+  rates.
+  Offers a hassle-free experience with clear prompts and instructions.
+
+
 ### **Customer panel option 1**
 > ![Lucid Chart Flow Chart](assets/images/tc-customer-current-stock.webp)
 
 **Currency Stock Management**
 
-Admin Panel: Enables staff to view, add, or remove currency stock levels.
-Provides real-time updates on currency quantities to ensure accurate stock monitoring.
+* Admin Panel: Enables staff to view, add, or remove currency stock levels.
+  Provides real-time updates on currency quantities to ensure accurate stock monitoring.
 
 ### **Customer panel option 2**
 > ![Lucid Chart Flow Chart](assets/images/tc-customer-exchange-rates.webp)

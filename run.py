@@ -255,6 +255,8 @@ def customer_panel():
         main()
     else:
         print("Invalid choice.")
+        time.sleep(2)
+        customer_panel()
 
 
 def view_exchange_rates():

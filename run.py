@@ -166,7 +166,7 @@ def sell_currency():
         print("Available Stock:")
         for currency, units in stock.items():
             print(f"{currency}: {units} units available")
-        
+
         sc_message = (
             "Please enter a valid currency code (USD, EUR, GBP, etc.):"
         )
@@ -176,11 +176,10 @@ def sell_currency():
             print("Invalid currency selection. Please try again.")
             time.sleep(2)
             continue
-        
+
         try:
             sc_a_message = (
-                f"Enter the amount of {selected_currency} you want to buy:"
-            )
+                f"Enter the amount of {selected_currency} you want to buy:")
             amount = float(input(f"{sc_a_message}\n"))
             if amount <= 0:
                 print("Amount must be greater than 0. Please try again.")
@@ -190,7 +189,7 @@ def sell_currency():
             print("Invalid input. Please enter a numeric value.")
             time.sleep(2)
             continue
-        
+
         if amount > stock[selected_currency]:
             print(
                 f"Sorry, we only have {stock[selected_currency]} units of "
@@ -198,7 +197,7 @@ def sell_currency():
             )
             time.sleep(2)
             continue
-        
+
         exchange_rate = exchange_rates[selected_currency]
         cost_in_gbp = amount / exchange_rate
 
@@ -206,7 +205,7 @@ def sell_currency():
         confirm = input("Do you wish to proceed? (Y/N): \n").strip().lower()
 
         if confirm == "y":
-            
+
             stock[selected_currency] -= amount
             print(
                 f"You have purchased {amount:.2f} {selected_currency} for "
@@ -217,14 +216,13 @@ def sell_currency():
                 f"{stock[selected_currency]:.2f} units."
             )
             time.sleep(2)
-            
             receipt_message = "Do you want to print a receipt? (y/n):"
             receipt_choice = input(f"{receipt_message}\n").strip().lower()
             if receipt_choice == 'y':
                 print_receipt(selected_currency, amount, cost_in_gbp)
             else:
                 print("No receipt will be printed.")
-            break  
+            break
         elif confirm == "n":
             print("Transaction cancelled.")
             break
@@ -232,6 +230,7 @@ def sell_currency():
             print("Invalid choice. Returning to the main menu.")
             time.sleep(2)
             break
+
 
 def customer_panel():
     """
@@ -272,7 +271,6 @@ def customer_panel():
 
 
 def view_exchange_rates():
-
     """
     Display current exchange rates for all available currencies.
     """

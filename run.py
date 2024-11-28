@@ -160,66 +160,78 @@ def sell_currency():
     """
     Allows customers to buy foreign currency from the shop.
     """
-    clear_screen()
-    print("\nSell Currency")
-    print("Available Stock:")
-    for currency, units in stock.items():
-        print(f"{currency}: {units} units available")
+    while True:
+        clear_screen()
+        print("\nSell Currency")
+        print("Available Stock:")
+        for currency, units in stock.items():
+            print(f"{currency}: {units} units available")
+        
+        sc_message = (
+            "Please enter a valid currency code (USD, EUR, GBP, etc.):"
+        )
+        selected_currency = input(f"{sc_message}\n").strip().upper()
 
-    sc_message = "please enter currency code e.g USD, EUR, JPY..."
-    selected_currency = input(f"{sc_message}\n").strip().upper()
-
-    if selected_currency not in stock:
-        print("Invalid currency selection. Please try again.")
-        time.sleep(2)
-        sell_currency()
-
-    sc_a_message = f"Enter the amount of {selected_currency} you want to buy:"
-    try:
-        amount = float(input(f"{sc_a_message}\n"))
-        print("\n")
-    except ValueError:
-        print("Invalid input. Please enter a numeric value.")
-        time.sleep(2)
-        sell_currency()
-
-    if amount > stock[selected_currency]:
-        s_message = f"\nSorry, we only have{stock[selected_currency]} left."
-        print(f"{s_message}")
-        time.sleep(2)
-        sell_currency()
-
-    exchange_rate = exchange_rates[selected_currency]
-    cost_in_gbp = amount / exchange_rate
-
-    print(f"{amount:.2f} {selected_currency} is {cost_in_gbp:.2f} GBP.")
-    confirm = input("Do you wish to proceed? (Y/N): \n").strip().lower()
-
-    if confirm == "y":
-
-        stock[selected_currency] -= amount
-        print(f"You have purchased {amount:.2f} "
-              f"{selected_currency} for {cost_in_gbp:.2f} GBP.")
-
-        print("\n")
-        print(f"Remaining stock{selected_currency}:"
-              f"{stock[selected_currency]:.2f} units.")
-
-        print("\n")
-        receipt_message = "Do you want to print a receipt? (y/n):"
-        receipt_choice = input(f"{receipt_message}\n").strip().lower()
-        if receipt_choice == 'y':
-
-            print_receipt(selected_currency, amount, cost_in_gbp)
-        else:
-            print("No receipt will be printed.")
+        if selected_currency not in stock:
+            print("Invalid currency selection. Please try again.")
             time.sleep(2)
-            customer_panel()
-    else:
-        print("Transaction cancelled.")
-        input("\nPress Enter to return to the previous menu...\n")
-        customer_panel()
+            continue
+        
+        try:
+            sc_a_message = (
+                f"Enter the amount of {selected_currency} you want to buy:"
+            )
+            amount = float(input(f"{sc_a_message}\n"))
+            if amount <= 0:
+                print("Amount must be greater than 0. Please try again.")
+                time.sleep(2)
+                continue
+        except ValueError:
+            print("Invalid input. Please enter a numeric value.")
+            time.sleep(2)
+            continue
+        
+        if amount > stock[selected_currency]:
+            print(
+                f"Sorry, we only have {stock[selected_currency]} units of "
+                f"{selected_currency} available."
+            )
+            time.sleep(2)
+            continue
+        
+        exchange_rate = exchange_rates[selected_currency]
+        cost_in_gbp = amount / exchange_rate
 
+        print(f"{amount:.2f} {selected_currency} is {cost_in_gbp:.2f} GBP.")
+        confirm = input("Do you wish to proceed? (Y/N): \n").strip().lower()
+
+        if confirm == "y":
+            
+            stock[selected_currency] -= amount
+            print(
+                f"You have purchased {amount:.2f} {selected_currency} for "
+                f"{cost_in_gbp:.2f} GBP."
+            )
+            print(
+                f"Remaining stock of {selected_currency}: "
+                f"{stock[selected_currency]:.2f} units."
+            )
+            time.sleep(2)
+            
+            receipt_message = "Do you want to print a receipt? (y/n):"
+            receipt_choice = input(f"{receipt_message}\n").strip().lower()
+            if receipt_choice == 'y':
+                print_receipt(selected_currency, amount, cost_in_gbp)
+            else:
+                print("No receipt will be printed.")
+            break  
+        elif confirm == "n":
+            print("Transaction cancelled.")
+            break
+        else:
+            print("Invalid choice. Returning to the main menu.")
+            time.sleep(2)
+            break
 
 def customer_panel():
     """

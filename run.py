@@ -222,9 +222,11 @@ def sell_currency():
                 print_receipt(selected_currency, amount, cost_in_gbp)
             else:
                 print("No receipt will be printed.")
+                time.sleep(2)
             break
         elif confirm == "n":
             print("Transaction cancelled.")
+            time.sleep(2)
             break
         else:
             print("Invalid choice. Returning to the main menu.")

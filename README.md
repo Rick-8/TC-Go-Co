@@ -145,8 +145,39 @@ Final Check: After making corrections, the code was re-submitted to ensure it pa
 
 ![Ci linter fault free](assets/images/tc-ci-linter-error-free.webp)
 
+Testing the functionality of the program and identify any runtime errors or logical flaws.
 
+**Invalid menu option in the main menu**
 
+![Main menu error test](assets/images/tc-ie-main%20menu.webp)
+
+**Invalid currency input**
+
+![Input error test](assets/images/tc-ie-currency-input-error.webp)
+
+**Non-numeric input for currency amount**
+
+![Ci linter fault free](assets/images/tc-ie-currency-non-numeric.webp)
+
+**Purchasing more currency than available**
+
+![Ci linter fault free](assets/images/tc-ie-purchase-currency-overstock-level.webp)
+
+**Correct transaction flow**
+
+![Ci linter fault free](assets/images/tc-ie-trasaction-flow.webp)
+
+**Admin panel password verification**
+
+![Ci linter fault free](assets/images/tc-ie-login-fail.webp)
+
+**Exit options in customer and admin panels**
+
+![Ci linter fault free](assets/images/tc-ie-system-exit.webp)
+
+ **following the previous exit option, returns the Terminal back to a clean blank state, ready for the next command.**
+ 
+![Ci linter fault free](assets/images/tc-ie-terminal-blank.webp)
 
 > ## Deployment
 

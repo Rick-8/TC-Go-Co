@@ -131,7 +131,7 @@ This report outlines the error testing process conducted for the Currency Stock 
 - Screenshots Demonstrating Error-Free Execution.
 - Screenshots Showing simulated errors and error validation.
 
-**Code Submission: The code was submitted to the CI tool for automated style checking.**
+> **Code Submission: The code was submitted to the CI tool for automated style checking.**
 
 ![Ci linter pep8 faults](assets/images/screenshot-%20ciplinter-errors-list.webp)
 
@@ -141,11 +141,31 @@ This report outlines the error testing process conducted for the Currency Stock 
 - Indentation errors and spacing issues were corrected.
 - Blank lines removed
 
-Final Check: After making corrections, the code was re-submitted to ensure it passed all checks.
+> **Final Check: After making corrections, the code was re-submitted to ensure it passed all checks.**
 
 ![Ci linter fault free](assets/images/tc-ci-linter-error-free.webp)
 
 Testing the functionality of the program and identify any runtime errors or logical flaws.
+
+> **Development testing**
+
+Incorporating time.sleep(2) and Input Pauses
+
+Reason for Adding time.sleep(2)
+
+During the initial testing phases of the program, it was observed that error messages and prompts often disappeared too quickly, especially when the program transitioned back to the previous menu. This made it difficult for users to read and understand the messages before the screen was cleared or the next menu appeared.
+
+To address this issue, I added time.sleep(2) pauses after certain error messages and user prompts. This function temporarily halts the execution of the program for 2 seconds, giving users sufficient time to read the displayed messages.
+
+Implementation of time.sleep(2)
+The time.sleep function was imported from Python’s built-in **time** library at the beginning of the program.
+
+> **Adding "Press Enter to Continue" Prompts**
+
+In addition to time.sleep(2), I added "Press Enter to continue" prompts in sections where users might require more time, such as after viewing stock or exchange rates. This ensures that users can take as much time as they need before moving on.
+
+Example:
+input("\nPress Enter to return to the previous menu...\n")
 
 **Invalid menu option in the main menu**
 
@@ -157,29 +177,67 @@ Testing the functionality of the program and identify any runtime errors or logi
 
 **Non-numeric input for currency amount**
 
-![Ci linter fault free](assets/images/tc-ie-currency-non-numeric.webp)
+![Non numeric input error](assets/images/tc-ie-currency-non-numeric.webp)
 
 **Purchasing more currency than available**
 
-![Ci linter fault free](assets/images/tc-ie-purchase-currency-overstock-level.webp)
+![Not enough currency error](assets/images/tc-ie-purchase-currency-overstock-level.webp)
 
 **Correct transaction flow**
 
-![Ci linter fault free](assets/images/tc-ie-trasaction-flow.webp)
+![Transaction Flow](assets/images/tc-ie-trasaction-flow.webp)
 
 **Admin panel password verification**
 
-![Ci linter fault free](assets/images/tc-ie-login-fail.webp)
+![Admin panel login in fail](assets/images/tc-ie-login-fail.webp)
 
 **Exit options in customer and admin panels**
 
-![Ci linter fault free](assets/images/tc-ie-system-exit.webp)
+![Exit program](assets/images/tc-ie-system-exit.webp)
 
- **following the previous exit option, returns the Terminal back to a clean blank state, ready for the next command.**
- 
-![Ci linter fault free](assets/images/tc-ie-terminal-blank.webp)
+ **Following the previous exit option, returns the Terminal back to a clean blank state, ready for the next command.**
+
+![Clean terminal following an exit](assets/images/tc-ie-terminal-blank.webp)
 
 > ## Deployment
+
+**How I Deployed This Project**
+
+This project was developed using GitPod as the Integrated Development Environment (IDE) and GitHub as the version control repository. It was deployed to Heroku to make it publicly accessible.
+
+**Deployment Process**
+
+1. ***Version Control with GitHub***
+
+- Created a GitHub repository to store the project code.
+- Used git commands (git add, git commit, git push) to track changes and push the code to the remote 
+  repository on GitHub.
+
+2. ***Development in GitPod***
+
+- Opened the repository in GitPod, an online IDE, for writing, debugging, and testing the code.
+- Installed necessary dependencies and created the application logic in Python.
+
+3. ***Preparing for Deployment to Heroku***
+
+- Created a requirements.txt file using pip freeze > requirements.txt to list all the necessary dependencies 
+  for the project.
+- Added a Procfile with the command to start the application on Heroku (e.g., web: python app.py).
+- Committed and pushed these files to GitHub.
+
+4. ***Deploying to Heroku***
+
+- Logged in to Heroku and created a new application named to-go-co.
+- Linked the Heroku app to the GitHub repository by selecting the "Deploy" tab in the Heroku dashboard.
+- Enabled "Automatic Deploys" to ensure that every push to the GitHub main branch automatically triggers a 
+  redeployment.
+- Manually deployed the application for the first time to ensure everything was set up correctly.
+  
+5. ***Accessing the Application***
+
+- The application is live and can be accessed at the following link:
+- https://to-go-co-aac5a94da9b3.herokuapp.com/
+
 
 > ## Credits
 As always my mentor is fantastic, and so im greatful for his support and guidance.

@@ -226,6 +226,7 @@ This project was developed using GitPod as the Integrated Development Environmen
 
 1. ***Version Control with GitHub***
 
+- https://github.com/Rick-8/TC-Go-Co
 - Created a GitHub repository to store the project code.
 - Used git commands (git add, git commit, git push) to track changes and push the code to the remote 
   repository on GitHub.
@@ -239,7 +240,6 @@ This project was developed using GitPod as the Integrated Development Environmen
 
 - Created a requirements.txt file using pip freeze > requirements.txt to list all the necessary dependencies 
   for the project.
-- Added a Procfile with the command to start the application on Heroku (e.g., web: python app.py).
 - Committed and pushed these files to GitHub.
 
 4. ***Deploying to Heroku***

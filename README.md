@@ -56,6 +56,8 @@ Simple password-protected access ensures only authorized personnel can modify da
 Admin Panel: Enables staff to view, add, or remove currency stock levels.
 Provides real-time updates on currency quantities to ensure accurate stock monitoring.
 
+***Password - admin123***
+
 ![Admin login](assets/images/tc-admin-login.webp)
 
 ![Admin panel](assets/images/tc-admin-panel.webp)
